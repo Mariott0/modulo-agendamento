@@ -1,5 +1,5 @@
 export class Profissional {
-  id: number;
+  id: string;
   nome: string;
   telefone: string;
   idade: number;
@@ -7,7 +7,7 @@ export class Profissional {
   especialidade: string;
 
   constructor(
-    id: number,
+    id: string,
     nome: string,
     telefone: string,
     idade: number,
