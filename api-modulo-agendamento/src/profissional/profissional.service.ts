@@ -8,12 +8,27 @@ import { PrismaService } from 'prisma/prisma.service';
 export class ProfissionalService {
   constructor(private prisma: PrismaService) {}
 
+  private mapToEntity(profissional : any) : Profissional{
+    return{
+
+    id: profissional.id,
+    nome: profissional.nome,
+    telefone: profissional.telefone,
+    idade: profissional.idade,
+    endereco: profissional.endereco,
+    especialidade: profissional.especialidade,
+
+    }
+  }
+
   create(createProfissionalDto: CreateProfissionalDto) {
     return 'This action adds a new profissional';
   }
 
-  findAll() {
-    return `This action returns all profissional`;
+  async findAll(): Promise<Profissional[]> {
+    const profissional = 
+    await this.prisma.profissional.findMany();
+    return profissional.map(profissional => this.mapToEntity(profissional));  
   }
 
   findOne(id: number) {
