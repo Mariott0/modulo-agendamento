@@ -24,7 +24,7 @@ export class ProfissionalController {
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateProfissionalDto: UpdateProfissionalDto) {
-    return this.profissionalService.update(+id, updateProfissionalDto);
+    return this.profissionalService.update(id, updateProfissionalDto);
   }
 
   @Delete(':id')

@@ -21,8 +21,11 @@ export class ProfissionalService {
     }
   }
 
-  create(createProfissionalDto: CreateProfissionalDto) {
-    return 'This action adds a new profissional';
+  async create (createProfissionalDto: CreateProfissionalDto): Promise<Profissional> {
+    const profissional = await  this.prisma.profissional.create({
+      data: createProfissionalDto
+    });
+    return this.mapToEntity(profissional);
   }
 
   async findAll(): Promise<Profissional[]> {
@@ -31,12 +34,17 @@ export class ProfissionalService {
     return profissional.map(profissional => this.mapToEntity(profissional));  
   }
 
+
   findOne(id: number) {
     return `This action returns a #${id} profissional`;
   }
 
-  update(id: number, updateProfissionalDto: UpdateProfissionalDto) {
-    return `This action updates a #${id} profissional`;
+  async update(id: string, updateProfissionalDto: UpdateProfissionalDto): Promise<Profissional> {
+    const profissional = await this.prisma.profissional.update({
+      where: { id },
+      data: updateProfissionalDto,
+    });
+    return this.mapToEntity(profissional);
   }
 
   remove(id: number) {
