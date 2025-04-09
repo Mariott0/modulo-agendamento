@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Profissional } from './profissional.model';
 
 @Injectable({
   providedIn: 'root'
@@ -9,20 +11,25 @@ export class ProfissionalService {
   private apiURL = 'http://localhost:3000/profissionais';
 
   constructor(private http: HttpClient) { }
-listarProfissionais() {
+  listarProfissionais(): Observable<Profissional[]> {
+    return this.http.get<Profissional[]>(this.apiURL);
 
-}
-cadastrarProfissional() {
-  
-}
-buscarProfissional() {
+  }
+  cadastrarProfissional(profissional: Profissional): Observable<Profissional> {
+    return this.http.post<Profissional>(this.apiURL, profissional);
 
-}
-atualizarProfissional() {
+  }
+  buscarProfissional(id: string): Observable<Profissional> {
+    return this.http.get<Profissional>(`${this.apiURL}/${id}`);
 
-}
-deletarProfissional() {
+  }
+  atualizarProfissional(id: string, profissional: Profissional): Observable<Profissional> {
+    return this.http.put<Profissional>(`${this.apiURL}/${id}`, profissional);
 
-}
+  }
+  deletarProfissional(id: string): Observable<void> {
+    return this.http.delete<void>(`${this.apiURL}/${id}`);
+
+  }
 
 }
