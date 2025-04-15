@@ -19,7 +19,7 @@ export class ProfissionalController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.profissionalService.findOne(+id);
+    return this.profissionalService.findOne(id);
   }
 
   @Patch(':id')
@@ -29,6 +29,6 @@ export class ProfissionalController {
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.profissionalService.remove(+id);
+    return this.profissionalService.remove(id);
   }
 }
