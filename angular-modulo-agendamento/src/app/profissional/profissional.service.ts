@@ -8,7 +8,7 @@ import { Profissional } from './profissional.model';
 })
 export class ProfissionalService {
 
-  private apiURL = 'http://localhost:3000/profissionais';
+  private apiURL = 'http://localhost:3000/profissional';
 
   constructor(private http: HttpClient) { }
   listarProfissionais(): Observable<Profissional[]> {

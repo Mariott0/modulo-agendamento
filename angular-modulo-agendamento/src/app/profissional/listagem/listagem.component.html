@@ -1,1 +1,24 @@
 <p>listagem works!</p>
+
+
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nome</th>
+            <th>Idade</th>
+            <th>telefone</th>
+            <th>especialidade</th>
+            <th>endereco</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let profissional of profissionais">
+            <td>{{profissional.id}}</td>
+            <td>{{profissional.nome}}</td>
+            <td>{{profissional.idade}}</td>
+            <td>{{profissional.telefone}}</td>
+            <td>{{profissional.especialidade}}</td>
+            <td>{{profissional.endereco}}</td>
+    </tbody>
+</table>

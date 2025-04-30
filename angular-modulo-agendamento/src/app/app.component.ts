@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { ListagemComponent } from './profissional/listagem/listagem.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
