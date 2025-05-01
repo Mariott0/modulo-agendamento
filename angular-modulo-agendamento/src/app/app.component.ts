@@ -4,7 +4,7 @@ import { ListagemComponent } from './profissional/listagem/listagem.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, ],
+  imports: [RouterOutlet , ListagemComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
