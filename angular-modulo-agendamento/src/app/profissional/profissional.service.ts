@@ -24,7 +24,7 @@ export class ProfissionalService {
 
   }
   atualizarProfissional(id: string, profissional: Profissional): Observable<Profissional> {
-    return this.http.put<Profissional>(`${this.apiURL}/${id}`, profissional);
+    return this.http.patch<Profissional>(`${this.apiURL}/${id}`, profissional);
 
   }
   deletarProfissional(id: string): Observable<void> {

@@ -1,25 +1,25 @@
-<p>cadastro works!</p>
+<p>Cadastro de Profissional</p>
 
 <form (ngSubmit)="salvar()">
     <div>
         <label>Nome:</label>
-        <input [(ngModel)]="profissional.nome">
+        <input name="nome" type="text" [(ngModel)]="profissional.nome">
     </div>
     <div>
         <label>Telefone:</label>
-        <input [(ngModel)]="profissional.telefone">
+        <input name="telefone" type="number" [(ngModel)]="profissional.telefone">
     </div>
     <div>
         <label>Idade:</label>
-        <input type="number" [(ngModel)]="profissional.idade">
+        <input name="idade" type="number" [(ngModel)]="profissional.idade">
     </div>
     <div>
         <label>Endereço:</label>
-        <input [(ngModel)]="profissional.endereco">
+        <input name="endereco" type="text" [(ngModel)]="profissional.endereco">
     </div>
     <div>
         <label>Especialidade:</label>
-        <input [(ngModel)]="profissional.especialidade">
+        <input name="especialidade" type="text" [(ngModel)]="profissional.especialidade">
     </div>
     <button type="submit">Salvar</button>
 

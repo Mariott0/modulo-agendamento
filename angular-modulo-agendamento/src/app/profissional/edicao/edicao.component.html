@@ -1,1 +1,26 @@
-<p>edicao works!</p>
+<p>Edição de Profissional</p>
+
+<form (ngSubmit)="salvar()">
+    <div>
+        <label>Nome:</label>
+        <input name="nome" type="text" [(ngModel)]="profissional.nome">
+    </div>
+    <div>
+        <label>Telefone:</label>
+        <input name="telefone" type="text" [(ngModel)]="profissional.telefone">
+    </div>
+    <div>
+        <label>Idade:</label>
+        <input name="idade" type="number" [(ngModel)]="profissional.idade">
+    </div>
+    <div>
+        <label>Endereço:</label>
+        <input name="endereco" type="text" [(ngModel)]="profissional.endereco">
+    </div>
+    <div>
+        <label>Especialidade:</label>
+        <input name="especialidade" type="text" [(ngModel)]="profissional.especialidade">
+    </div>
+    <button type="submit">Atualizar</button>
+
+</form>
