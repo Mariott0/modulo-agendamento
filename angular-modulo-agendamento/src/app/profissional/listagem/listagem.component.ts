@@ -6,7 +6,7 @@ import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-listagem',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './listagem.component.html',
   styleUrl: './listagem.component.css'
 })

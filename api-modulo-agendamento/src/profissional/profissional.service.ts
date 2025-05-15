@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateProfissionalDto } from './dto/create-profissional.dto';
 import { UpdateProfissionalDto } from './dto/update-profissional.dto';
 import { Profissional } from './entities/profissional.entity';
@@ -23,7 +23,14 @@ export class ProfissionalService {
 
   async create(createProfissionalDto: CreateProfissionalDto): Promise<Profissional> {
     const profissional = await this.prisma.profissional.create({
-      data: createProfissionalDto
+
+      data: {
+        nome: createProfissionalDto.nome,
+        telefone: createProfissionalDto.telefone,
+        idade: createProfissionalDto.idade,
+        endereco: createProfissionalDto.endereco,
+        especialidade: createProfissionalDto.especialidade,
+      }
     });
     return this.mapToEntity(profissional);
   }
@@ -43,10 +50,25 @@ export class ProfissionalService {
 
 
   async update(id: string, updateProfissionalDto: UpdateProfissionalDto): Promise<Profissional> {
-    const profissional = await this.prisma.profissional.update({
-      where: { id },
-      data: updateProfissionalDto,
+    const profissional = await this.prisma.profissional.findUnique({
+      where: { id }
     });
+    if (!profissional) {
+      throw new NotFoundException(`Profissional com ID ${id} não encontrado`);
+    }
+    const profissionalAtualizado = await this.prisma.profissional.update({
+      where: { id },
+      data: {
+        nome: updateProfissionalDto.nome,
+        telefone: updateProfissionalDto.telefone,
+        idade: updateProfissionalDto.idade,
+        endereco: updateProfissionalDto.endereco,
+        especialidade: updateProfissionalDto.especialidade,
+      }
+
+    })
+
+
     return this.mapToEntity(profissional);
   }
 

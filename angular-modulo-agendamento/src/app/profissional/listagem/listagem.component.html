@@ -1,24 +1,67 @@
-<p>Listagem de Profissional</p>
+<div class="container my-4">
+    <!-- Cabeçalho com ação -->
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-4">
+        <div>
+            <h2 class="fw-bold mb-2">Profissionais Cadastrados</h2>
+            <p class="text-muted">Gerencie seus profissionais cadastrados com facilidade.</p>
+        </div>
+        <a class="btn btn-success px-4 py-2 mt-2 mt-md-0" routerLink="/cadastro">
+            <i class="bi bi-person-plus me-2"></i>Novo Cadastro
+        </a>
+    </div>
 
+    <!-- Tabela responsiva para telas grandes -->
+    <div class="d-none d-md-block">
+        <div class="table-responsive">
+            <table class="table table-hover align-middle">
+                <thead class="table-light">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Idade</th>
+                        <th>Telefone</th>
+                        <th>Especialidade</th>
+                        <th>Endereço</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let profissional of profissionais">
+                        <td>{{ profissional.id }}</td>
+                        <td>{{ profissional.nome }}</td>
+                        <td>{{ profissional.idade }}</td>
+                        <td>{{ profissional.telefone }}</td>
+                        <td>{{ profissional.especialidade }}</td>
+                        <td>{{ profissional.endereco }}</td>
+                        <td>
+                            <a class="btn btn-outline-primary btn-sm" [routerLink]="['/edicao', profissional.id]">
+                                <i class="bi bi-pencil"></i> Editar
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 
-<table>
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Nome</th>
-            <th>Idade</th>
-            <th>Telefone</th>
-            <th>Especialidade</th>
-            <th>Endereço</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let profissional of profissionais">
-            <td>{{profissional.id}}</td>
-            <td>{{profissional.nome}}</td>
-            <td>{{profissional.idade}}</td>
-            <td>{{profissional.telefone}}</td>
-            <td>{{profissional.especialidade}}</td>
-            <td>{{profissional.endereco}}</td>
-    </tbody>
-</table>
+    <!-- Cards responsivos para mobile -->
+    <div class="d-block d-md-none">
+        <div class="row g-3">
+            <div class="col-12" *ngFor="let profissional of profissionais">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title fw-semibold">{{ profissional.nome }}</h5>
+                        <p class="mb-1"><strong>ID:</strong> {{ profissional.id }}</p>
+                        <p class="mb-1"><strong>Idade:</strong> {{ profissional.idade }}</p>
+                        <p class="mb-1"><strong>Telefone:</strong> {{ profissional.telefone }}</p>
+                        <p class="mb-1"><strong>Especialidade:</strong> {{ profissional.especialidade }}</p>
+                        <p class="mb-3"><strong>Endereço:</strong> {{ profissional.endereco }}</p>
+                        <a class="btn btn-sm btn-outline-primary w-100" [routerLink]="['/edicao', profissional.id]">
+                            <i class="bi bi-pencil"></i> Editar
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
