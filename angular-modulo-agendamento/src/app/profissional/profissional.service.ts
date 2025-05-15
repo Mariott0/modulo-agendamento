@@ -27,9 +27,14 @@ export class ProfissionalService {
     return this.http.patch<Profissional>(`${this.apiURL}/${id}`, profissional);
 
   }
-  deletarProfissional(id: string): Observable<void> {
+  /*deletarProfissional(id: string): Observable<void> {
     return this.http.delete<void>(`${this.apiURL}/${id}`);
 
+  }*/
+
+  excluirProfissional(id: string) {
+    return this.http.delete(`${this.apiURL}/${id}`);
   }
+
 
 }

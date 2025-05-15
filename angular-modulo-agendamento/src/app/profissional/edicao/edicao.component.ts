@@ -24,15 +24,11 @@ export class EdicaoComponent implements OnInit {
 
   private id!: string;
 
-
   constructor(
-
     private route: ActivatedRoute,
     private router: Router,
     private profissionalService: ProfissionalService,
   ) { }
-
-
 
   ngOnInit(): void {
     this.id = String(this.route.snapshot.paramMap.get('id'));
@@ -40,7 +36,6 @@ export class EdicaoComponent implements OnInit {
   }
 
   carregarProfissional(): void {
-
     if (!this.id) {
       this.router.navigate(['/listagem']);
       return;
@@ -48,9 +43,9 @@ export class EdicaoComponent implements OnInit {
 
     this.profissionalService.buscarProfissional(this.id).subscribe((a) => {
       this.profissional = a;
-
     });
   }
+
   salvar(): void {
     if (!this.profissional) return;
 
@@ -59,6 +54,11 @@ export class EdicaoComponent implements OnInit {
     });
   }
 
-
-
+  excluir(): void {
+    if (confirm('Tem certeza que deseja excluir este profissional?')) {
+      this.profissionalService.excluirProfissional(this.id).subscribe(() => {
+        this.router.navigate(['/listagem']);
+      });
+    }
+  }
 }
