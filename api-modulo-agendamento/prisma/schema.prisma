@@ -16,7 +16,7 @@ datasource db {
 model profissional {
     id              String @id @default (uuid())
     nome            String
-    telefone        Int
+    telefone        String
     idade           Int
     endereco        String
     especialidade   String
